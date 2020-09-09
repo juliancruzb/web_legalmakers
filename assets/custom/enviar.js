@@ -12,14 +12,14 @@ $(document).ready(function () {
                 * servidor.
                 * */
                 // btnEnviar.text("Enviando"); Para button 
-                btnEnviar.val("Enviando"); // Para input de tipo button
+                btnEnviar.prop('value', 'Enviando'); // Para input de tipo button
                 btnEnviar.attr("disabled","disabled");
             },
             complete:function(data){
                 /*
                 * Se ejecuta al termino de la petición
                 * */
-                btnEnviar.val("Enviar");
+               btnEnviar.prop('value', 'Enviar');
                 btnEnviar.removeAttr("disabled");
             },
             success: function(data){
@@ -27,14 +27,18 @@ $(document).ready(function () {
                 * Se ejecuta cuando termina la petición y esta ha sido
                 * correcta
                 * */
+               btnEnviar.prop('value', 'Enviar');
                document.getElementById("enviado").removeAttribute("hidden");
+               document.getElementById("formulario").reset();
                 //$(".respuesta").html(data);
             },
             error: function(data){
                 /*
                 * Se ejecuta si la peticón ha sido erronea
                 * */
+               btnEnviar.prop('value', 'Enviar');
                document.getElementById("enviado").removeAttribute("hidden");
+               document.getElementById("formulario").reset();
                 
             }
         });
